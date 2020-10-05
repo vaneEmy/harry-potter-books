@@ -4,15 +4,13 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
-public class Order {
+public class BookOrder {
 
     @NonNull
-    private List<BookOrder> books;
+    private String bookIdentifier;
 
     @NonNull
-    private String total;
+    private String quantity;
 }

@@ -4,6 +4,7 @@ import me.vanemy.harry.potter.books.api.v1.assembler.BookAssembler;
 import me.vanemy.harry.potter.books.api.v1.exception.FileStorageException;
 import me.vanemy.harry.potter.books.api.v1.exception.MyFileNotFoundException;
 import me.vanemy.harry.potter.books.api.v1.model.Book;
+import me.vanemy.harry.potter.books.api.v1.model.BookOrder;
 import me.vanemy.harry.potter.books.business.property.FileStorageProperties;
 import me.vanemy.harry.potter.books.business.repository.BookEntity;
 import me.vanemy.harry.potter.books.business.repository.BookRepository;
@@ -20,6 +21,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -104,6 +106,18 @@ public class BookService {
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
+    }
+
+    public String validateIdentifier(List<BookOrder> orderList){
+        String invalidIdentifier = null;
+
+        for(BookOrder order: orderList){
+            Optional<BookEntity> optionalBookEntity = this.bookRepository.findById(Integer.parseInt(order.getBookIdentifier()));
+            if(!optionalBookEntity.isPresent())
+                return invalidIdentifier = order.getBookIdentifier();
+        }
+
+        return invalidIdentifier;
     }
 
 }
