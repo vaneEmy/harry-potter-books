@@ -14,6 +14,8 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -43,6 +45,7 @@ public class BookService {
         }
     }
 
+    @Transactional
     public void createBook(MultipartFile file, String name, String price, String quantity) {
         BookEntity bookEntity = new BookEntity();
         bookEntity.setName(name);

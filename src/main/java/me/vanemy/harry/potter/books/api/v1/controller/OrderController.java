@@ -32,7 +32,7 @@ public class OrderController {
         if(invalidIdentifier != null)
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
-
+        orderService.createOrder(order);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
