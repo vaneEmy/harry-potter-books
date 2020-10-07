@@ -8,11 +8,10 @@ import lombok.Setter;
 @Setter
 public class User {
 
-    @NonNull
     private String identifier;
 
     @NonNull
-    private String name;
+    private String username;
 
     @NonNull
     private String password;

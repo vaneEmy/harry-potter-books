@@ -7,8 +7,7 @@ public class UserAssembler {
 
     public static UserEntity toModel(User user, String encodedPassword){
         UserEntity userEntity = new UserEntity();
-        userEntity.setId(Integer.parseInt(user.getIdentifier()));
-        userEntity.setName(user.getName());
+        userEntity.setUsername(user.getUsername());
         userEntity.setPassword(encodedPassword);
         return userEntity;
     }

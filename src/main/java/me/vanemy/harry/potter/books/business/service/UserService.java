@@ -22,7 +22,6 @@ public class UserService implements IUserService {
         this.userRepository = userRepository;
     }
 
-
     @Transactional
     @Override
     public void createUser(User user) {
@@ -34,7 +33,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public boolean userExists(String userIdentifier) {
-        return this.userRepository.existByIdentifier(Integer.parseInt(userIdentifier));
+    public boolean userExists(String username) {
+        return this.userRepository.existByUsername(username);
     }
 }

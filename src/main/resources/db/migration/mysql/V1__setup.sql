@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `books_catalog` (
 
 CREATE TABLE IF NOT EXISTS `users_catalog` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(50) NOT NULL,
+  `username` VARCHAR(50) NOT NULL UNIQUE,
   `password` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`)) ENGINE = InnoDB;
 

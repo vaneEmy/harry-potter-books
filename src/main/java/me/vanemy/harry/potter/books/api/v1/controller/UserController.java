@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -22,16 +19,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "/users", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createUser(@RequestBody User user) {
 
-        if(userService.userExists(user.getIdentifier())){
+        if(userService.userExists(user.getUsername())){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
         userService.createUser(user);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
 
 }
