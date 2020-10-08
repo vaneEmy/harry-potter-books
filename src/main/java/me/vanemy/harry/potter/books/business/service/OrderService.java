@@ -27,7 +27,7 @@ public class OrderService implements IOrderService{
     @Transactional
     @Override
     public void createOrder(Order order) {
-        Optional<UserEntity> optionalUserEntity = userRepository.findById(239546);
+        Optional<UserEntity> optionalUserEntity = userRepository.findByUsername(order.getUsername());
 
         optionalUserEntity.ifPresent(userEntity -> {
             PurchaseOrderEntity purchaseOrderEntity = PurchaseOrder.toModel(userEntity,order);

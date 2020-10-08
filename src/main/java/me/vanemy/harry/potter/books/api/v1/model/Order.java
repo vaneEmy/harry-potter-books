@@ -15,4 +15,7 @@ public class Order {
 
     @NonNull
     private String total;
+
+    @NonNull
+    private String username;
 }
