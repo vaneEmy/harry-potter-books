@@ -3,6 +3,7 @@
 ### Requirements
 
 - Java v8 
+- Mysql v10+
 
 ### Steps to Setup
 

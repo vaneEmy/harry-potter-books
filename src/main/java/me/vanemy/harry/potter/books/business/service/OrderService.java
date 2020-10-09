@@ -55,7 +55,6 @@ public class OrderService implements IOrderService{
         for(BookOrder bookOrder: orderList){
             Optional<BookEntity> optionalBookEntity = bookRepository.findById(Integer.parseInt(bookOrder.getBookIdentifier()));
             optionalBookEntity.ifPresent(bookEntity -> {
-                System.out.println(":)");
                 int quantity = bookEntity.getQuantity();
 
                 bookEntity.setQuantity(quantity - Integer.parseInt(bookOrder.getQuantity()));
